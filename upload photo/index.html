@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Preview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+ 
+<body> 
+    <div class="container">
+        <label for="file" class="header">
+            <div class="upload-file">
+                <a href="">
+                <ion-icon id="upload-icon" name="cloud-upload-outline"></ion-icon>
+                </a>
+                <p id="upload-text">Browse File to upload!</p>
+            </div>
+        </label>
+        <label for="file" class="footer">
+            <p>Not selected file</p>
+        </label>
+        <input type="file" id="file" accept="Image/*"
+        onchange="showPreview(event);">
+    </div>
+
+    <script>
+        function showPreview(event){
+            const fileInput = event.target;
+            const file = fileInput.files[0];
+            const header = document.querySelector(".header");
+            const uploadIcon = document.getElementById("upload-icon");
+            const uploadText = document.getElementById("upload-text");
+            const footer = document.querySelector(".footer");
+
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    header.style.backgroundImage = 
+                    `url(${e.target.result})`;
+                    header.style.border = 'none';
+                    uploadIcon.style.display = 'none';
+                    uploadText.style.display = 'none';
+                    footer.innerHTML = `<p>${file.name}</p>`
+                }
+                reader.readAsDataURL(file);
+            }
+
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
