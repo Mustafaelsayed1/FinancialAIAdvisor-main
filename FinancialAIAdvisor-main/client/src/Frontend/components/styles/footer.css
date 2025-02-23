@@ -8,10 +8,25 @@
   src: url("../Assets/Fonts/Aeonik-Thin.otf") format("opentype");
 } */
 
+@font-face {
+  font-family: "Urbanist-Reg";
+  src: url("../../../assets/fonts/Urbanist-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Urbanist-Bold";
+  src: url("../../../assets/fonts/Urbanist-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
 .footer {
   background-color: #000000;
   color: #fff;
   padding: 50px 0;
+}
+
+.footer-para {
+  font-family: "Urbanist-Reg" !important;
 }
 
 .footer-container {
@@ -106,4 +121,14 @@
 .newsletter-form button:hover {
   background-color: #fff;
   color: #1c1c1c;
+}
+
+.newsletter {
+  font-family: "Urbanist-Reg" !important;
+}
+
+.subButton {
+  font-family: "Urbanist-Reg" !important;
+  font-weight: 800;
+  font-size: 20px;
 }

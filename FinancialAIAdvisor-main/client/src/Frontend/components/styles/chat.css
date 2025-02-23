@@ -32,12 +32,17 @@
   color: white;
   padding: 12px;
   border-radius: 10px;
-  white-space: pre-wrap; /* Preserve JSON format */
-  font-family: monospace; /* Makes JSON more readable */
+  white-space: pre-wrap;
+  /* Preserve JSON format */
+  font-family: monospace;
+  /* Makes JSON more readable */
   font-size: 14px;
-  overflow-x: auto; /* Allows horizontal scrolling if needed */
-  max-width: 90%; /* Keeps response within the chat area */
-  word-wrap: break-word; /* Ensures long words don't overflow */
+  overflow-x: auto;
+  /* Allows horizontal scrolling if needed */
+  max-width: 90%;
+  /* Keeps response within the chat area */
+  word-wrap: break-word;
+  /* Ensures long words don't overflow */
 }
 
 
@@ -60,5 +65,6 @@
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
+  margin-top: 20px;
   cursor: pointer;
 }

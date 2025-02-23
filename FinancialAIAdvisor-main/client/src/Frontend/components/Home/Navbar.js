@@ -10,6 +10,7 @@ import { useAuthContext } from "../../../context/AuthContext";
 import { useLogout } from "../../../hooks/useLogout.js";
 import "../styles/navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Logo from '../../../assets/img/latest_logo.svg'
 
 const NavBar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -40,9 +41,9 @@ const NavBar = () => {
       <Container fluid>
         <Navbar.Brand as={Link} to="/" className="navbar-brand">
           <img
-            // src={logo}
+            src={Logo}
             alt="Company Logo"
-            style={{ width: "80px", height: "57px", top: 0 }}
+            style={{ width: "150px", height: "57px", top: 0 }}
           />
         </Navbar.Brand>
         <Navbar.Toggle
@@ -55,10 +56,10 @@ const NavBar = () => {
             <ScrollLink
               to="hero-section"
               smooth
-              className="nav-link"
+              className="nav-link urbanist-normal"
               onClick={handleNavCollapse}
             >
-              HOME
+              Home
             </ScrollLink>
             <ScrollLink
               to="WhoWeAre"
@@ -66,11 +67,11 @@ const NavBar = () => {
               className="nav-link"
               onClick={handleNavCollapse}
             >
-              WHO WE ARE
+              About Us
             </ScrollLink>
-         
-        
-     
+
+
+
             <ScrollLink
               to="/contact"
               className="nav-link"
@@ -78,6 +79,7 @@ const NavBar = () => {
             >
               Contact Us
             </ScrollLink>
+
             {isAuthenticated && user && (
               <Nav.Link
                 as={Link}

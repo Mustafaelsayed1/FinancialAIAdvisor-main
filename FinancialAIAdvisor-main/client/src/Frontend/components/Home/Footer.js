@@ -5,6 +5,7 @@ import {
   faLinkedin,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import OurLogo from "../../../assets/img/latest_logo.svg";
 
 import "../styles/footer.css";
 
@@ -13,8 +14,8 @@ function Footer() {
     <section className="footer">
       <div className="footer-container">
         <div className="footer-col">
-          <h4>AI Personal Financial Advisor</h4>
-          <p>
+          <img style={{ width: "180px" }} src={OurLogo} alt="" />
+          <p className="footer-para">
             Manage your finances like never before. Our AI-powered platform
             provides personalized budgeting, investment, and savings advice.
             Take control of your financial future with data-driven insights.
@@ -33,10 +34,10 @@ function Footer() {
         </div>
 
         <div className="footer-col">
-          <h4>Subscribe for Financial Tips</h4>
+          <h4 className="footer-para">Subscribe for Financial Tips</h4>
           <form className="newsletter-form">
-            <input type="email" placeholder="Enter your email" />
-            <button type="submit">Subscribe</button>
+            <input className="newsletter" type="email" placeholder="Enter your email" />
+            <button className="subButton" type="submit">Subscribe</button>
           </form>
         </div>
       </div>

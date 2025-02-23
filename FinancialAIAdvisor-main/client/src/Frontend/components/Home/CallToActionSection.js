@@ -15,13 +15,13 @@ const CallToActionSection = () => {
       <Container>
         <Row>
           <Col>
-            <h2>Take Control of Your Finances</h2>
-            <p>
+            <h2 className="mission_title" style={{ textAlign: "center" }}>Take Control of Your Finances</h2>
+            <p className="mission_description" style={{ textAlign: "center", width: "70%", margin: "auto", paddingBottom: "20px" }}>
               Register now to receive personalized financial advice, powered by
               AI. Achieve your financial goals with tailored recommendations and
               insights.
             </p>
-            <Button onClick={handleRegisterClick}>Get Started Today</Button>
+            <Button className="getStarted" onClick={handleRegisterClick}>Get Started Today</Button>
           </Col>
         </Row>
       </Container>

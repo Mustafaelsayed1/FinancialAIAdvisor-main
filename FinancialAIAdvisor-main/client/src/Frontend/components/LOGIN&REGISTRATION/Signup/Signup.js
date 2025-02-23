@@ -41,12 +41,13 @@ const Signup = () => {
     <div className="main-Container">
       <div className="frame-Container">
         <div className="left-sign">
-          <h2>Sign Up for Personalized Financial Advice</h2>
-          <form onSubmit={handleSignup}>
+          <h2 className="signup_title">Sign Up for Personalized Financial Advice</h2>
+          <form style={{ width: "90%", margin: "auto", gap: "20px" }} onSubmit={handleSignup}>
             <div className="field">
               <div className="field-wrapper">
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username">Username</label>
                 <input
+                  placeholder="enter your username"
                   type="text"
                   id="username"
                   value={username}
@@ -57,8 +58,9 @@ const Signup = () => {
             </div>
             <div className="field">
               <div className="field-wrapper">
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email</label>
                 <input
+                  placeholder="enter your email"
                   type="email"
                   id="email"
                   value={email}
@@ -71,6 +73,7 @@ const Signup = () => {
               <div className="field-wrapper">
                 <label htmlFor="nid">National ID (NID):</label>
                 <input
+                  placeholder="enter your NID"
                   type="text"
                   id="nid"
                   value={nid}
@@ -83,6 +86,7 @@ const Signup = () => {
               <div className="field-wrapper">
                 <label htmlFor="income">Monthly Income:</label>
                 <input
+                  placeholder="Enter your income"
                   type="number"
                   id="income"
                   value={income}
@@ -95,6 +99,7 @@ const Signup = () => {
               <div className="field-wrapper">
                 <label htmlFor="financialGoals">Financial Goals:</label>
                 <input
+                  placeholder="e.g., Save for a house, Retirement"
                   type="text"
                   id="financialGoals"
                   value={financialGoals}
@@ -107,6 +112,7 @@ const Signup = () => {
               <div className="field-wrapper">
                 <label htmlFor="firstName">First Name:</label>
                 <input
+                  placeholder="enter your first name"
                   type="text"
                   id="firstName"
                   value={firstName}
@@ -118,6 +124,7 @@ const Signup = () => {
               <div className="field-wrapper">
                 <label htmlFor="middleName">Middle Name:</label>
                 <input
+                  placeholder="enter your middle name"
                   type="text"
                   id="middleName"
                   value={middleName}
@@ -129,6 +136,7 @@ const Signup = () => {
               <div className="field-wrapper">
                 <label htmlFor="lastName">Last Name:</label>
                 <input
+                  placeholder="enter your last name"
                   type="text"
                   id="lastName"
                   value={lastName}
@@ -140,6 +148,7 @@ const Signup = () => {
               <div className="field-wrapper">
                 <label htmlFor="password">Password:</label>
                 <input
+                  placeholder="enter your password"
                   type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
@@ -160,6 +169,7 @@ const Signup = () => {
               <div className="field-wrapper">
                 <label htmlFor="confirmPassword">Confirm Password:</label>
                 <input
+                  placeholder="confirm your password"
                   type={showConfirmPassword ? "text" : "password"}
                   id="confirmPassword"
                   value={confirmPassword}
@@ -178,7 +188,7 @@ const Signup = () => {
                 </button>
               </div>
             </div>
-            <div className="field">
+            <div className="field_gender">
               <label>Gender:</label>
               <div className="gender-container">
                 <label>
@@ -213,7 +223,7 @@ const Signup = () => {
         <div className="right-sign">
           <h1>Already have an account?</h1>
           <Link to="/login">
-            <button className="right_btn" type="button">
+            <button className="right_btn custom_reg" type="button">
               Login
             </button>
           </Link>

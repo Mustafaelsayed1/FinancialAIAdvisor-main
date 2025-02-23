@@ -2,14 +2,41 @@ body {
   margin: 0;
 }
 
+@font-face {
+  font-family: "Urbanist-Reg";
+  src: url("../../../assets/fonts/Urbanist-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Urbanist-Bold";
+  src: url("../../../assets/fonts/Urbanist-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reg_cta {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
 .main-container {
   width: 100%;
-  min-height: 100vh;
+  min-height: 70vh;
+  height: max-content;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f4f4f4;
-  padding: 20px;
+  background-color: white;
+  padding: 0px;
   box-sizing: border-box;
 }
 
@@ -18,11 +45,14 @@ body {
   max-width: 900px;
   width: 100%;
   display: flex;
-  flex-direction: row;
-  background-color: #000000;
+  flex-direction: column;
   border-radius: 10px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+}
+
+.reg_link {
+  width: 90% !important;
+  margin: auto !important;
 }
 
 .left-login,
@@ -34,51 +64,44 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  width: 90%;
+  margin: auto;
 }
 
 .left-login,
 .left-signup {
-  background-color: #eceae6;
+  background-color: white;
+  border: none;
+  box-shadow: none !important;
 }
 
-.right-login,
-.right-signup {
-  background-color: #000000;
-}
+
 
 .left-login h2,
 .left-signup h2 {
   color: #323c43;
   font-size: 36px;
+  font-family: "Urbanist-Bold";
   margin-bottom: 20px;
-  font-family: "Beverly", sans-serif;
 }
+
 .right-login h1,
 .right-signup h1 {
   color: #f7f8f9;
   font-size: 36px;
   margin-bottom: 20px;
-  font-family: "Beverly", sans-serif;
 }
 
 .field {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
 }
 
-.field label {
-  font-size: 16px;
-  margin-right: 10px;
-  color: #333;
-  min-width: 100px; /* Adjust based on your preference */
-  text-align: right;
-}
 
 .field-wrapper {
   display: flex;
-  align-items: center;
+  align-items: start;
+  flex-direction: column;
   position: relative;
   width: 100%;
 }
@@ -103,28 +126,21 @@ body {
 }
 
 .show-password {
-  background-color: #504848;
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 10px;
-  top: 40%; /* Adjusted from 50% to 40% */
+  background-color: transparent;
+  right: 0px;
+  top: 0px;
   transform: translateY(-50%);
   font-size: 18px;
-  color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px;
   border-radius: 50%;
-  transition: background-color 0.3s, color 0.3s;
-
 }
 
-.show-password:hover {
-  background-color: #938282;
-  color: #000;
-}
 
 .show-password i {
   font-size: 1.2em;
@@ -138,7 +154,7 @@ body {
   outline: none;
   padding: 12px 0;
   border-radius: 20px;
-  width: 180px;
+  width: 100%;
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
@@ -149,6 +165,11 @@ body {
 .left_btn {
   background-color: #323c43;
   color: #eef0f1;
+  width: 100%;
+  margin-top: 40px;
+  font-size: 20px;
+  border-radius: 100px;
+  font-family: "Urbanist-Bold";
 }
 
 .left_btn:hover {
@@ -168,7 +189,12 @@ body {
   color: #323c43;
 }
 
+.password_field {
+  position: relative;
+}
+
 @media only screen and (max-width: 760px) {
+
   .login-container,
   .signup-container {
     flex-direction: column;
