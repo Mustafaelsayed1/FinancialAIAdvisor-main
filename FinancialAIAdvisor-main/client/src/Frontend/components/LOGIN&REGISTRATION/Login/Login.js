@@ -2,6 +2,9 @@ import React from "react";
 import "../../styles/login.css"; // Adjust the path as needed
 import { Link, useNavigate } from "react-router-dom";
 import { useLogin } from "../../../../hooks/useLogin";
+import ShowPass from '../../../../assets/img/eye.svg'
+import ShowPassOff from '../../../../assets/img/eye-off.svg'
+
 
 const Login = () => {
   const {
@@ -16,23 +19,20 @@ const Login = () => {
     isLoading,
     handleLogin,
   } = useLogin();
-  // ✅ Calls login function
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await handleLogin(); // ✅ Calls login function
-  };
+
   return (
     <div className="main-container">
       <div className="login-container">
         <div className="left-login">
           <h2>Login</h2>
-          <form onSubmit={handleLogin}>
+          <form style={{ width: "90%", margin: "auto" }} onSubmit={handleLogin}>
             <div className="field">
               <div className="field-wrapper">
-                <label htmlFor="email">Email:</label>
+                <label className="custom_label" htmlFor="email">Email</label>
                 <input
                   type="email"
                   id="email"
+                  placeholder="enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -41,37 +41,44 @@ const Login = () => {
             </div>
             <div className="field password-container">
               <div className="field-wrapper">
-                <label htmlFor="password">Password:</label>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="show-password"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  <i
-                    className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}
-                  ></i>
-                </button>
+                <label className="custom_label" htmlFor="password">Password</label>
+                <div className="password-container">
+                  <input
+                    placeholder="enter your password"
+                    className="password_field"
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="show-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <img src={ShowPassOff} alt="" />
+                    ) : (
+                      <img src={ShowPass} alt="" />
+                    )}
+
+                  </button>
+                </div>
               </div>
             </div>
             {errorMessage && <div className="error">{errorMessage}</div>}
             {successMessage && <div className="success">{successMessage}</div>}
             <button className="left_btn" type="submit" disabled={isLoading}>
               {isLoading ? "Logging in..." : "Login"}
-              
+
             </button>
           </form>
         </div>
 
         <div className="right-login">
-          <h1>Don't have an account?</h1>
-          <Link to="/signup">
+          <h4 className="reg_cta">Don't have an account?</h4>
+          <Link to="/signup" className="reg_link">
             <button className="right_btn" type="button" disabled={isLoading}>
               Signup
             </button>

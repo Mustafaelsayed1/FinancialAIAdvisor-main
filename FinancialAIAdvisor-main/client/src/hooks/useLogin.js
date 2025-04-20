@@ -1,79 +1,54 @@
-import { useState, useCallback } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom"; // ✅ Add this impor
+import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 
-const apiUrl = process.env.REACT_APP_API_URL;
-const localUrl = "http://localhost:4000";
-
 export const useLogin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { dispatch } = useAuthContext();
-  const navigate = useNavigate();   // ✅ 
-  const handleLogin = useCallback(
-    async (e) => {
-      e.preventDefault();
-      setIsLoading(true);
-      setErrorMessage("");
-      setSuccessMessage("");
+  const { login } = useAuthContext();
 
-      try {
-        const response = await axios.post(
-          `${
-            process.env.NODE_ENV === "production" ? apiUrl : localUrl
-          }/api/users/login`,
-          { email, password },
-          { withCredentials: true }
-        );
+  const loginUser = async (email, password) => {
+    setIsLoading(true);
+    setError(null);
 
-        const { token, user } = response.data;
+    try {
+      // In a real application, you would make an API call here
+      // For demo purposes, we're simulating a successful login
 
-        if (token && user) {
-          // Store token and user in local storage
-          localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify({ token, user }));
+      // Mock API call delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-          // Set Authorization header
-          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-          // Dispatch login success
-          dispatch({ type: "LOGIN_SUCCESS", payload: user });
-
-          // Set success message
-          setSuccessMessage("Login successful");
-          // ✅ Redirect to Home Page after successful login
-  // ✅ Redirect to Chatbot instead of Home
-      navigate("/chatbot");
-        } else {
-          console.error("Unexpected response format:", response.data);
-          throw new Error("Invalid response data");
-        }
-      } catch (error) {
-        console.error("Login error:", error);
-        setErrorMessage(error.response?.data?.message || "Login failed");
-        dispatch({ type: "AUTH_ERROR" });
-      } finally {
-        setIsLoading(false);
+      // Example validation
+      if (!email || !password) {
+        throw new Error("Email and password are required");
       }
-    },
-    [email, password, dispatch]
-  );
 
-  return {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    showPassword,
-    setShowPassword,
-    errorMessage,
-    successMessage,
-    isLoading,
-    handleLogin,
+      if (password.length < 6) {
+        throw new Error("Password must be at least 6 characters");
+      }
+
+      // Mock successful login - in a real app, this would come from the server
+      const userData = {
+        id: "123456",
+        name: "Demo User",
+        email: email,
+        role: "user",
+      };
+
+      // Use the login function from AuthContext
+      const result = await login(userData);
+
+      if (!result.success) {
+        throw new Error(result.error || "Login failed");
+      }
+
+      return true;
+    } catch (err) {
+      setError(err.message || "An error occurred during login");
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  return { loginUser, isLoading, error };
 };
